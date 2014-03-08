@@ -74,6 +74,7 @@ header h1 {
   font-size: 48px;
   color: #303030;
   line-height: 1.2;
+  padding-left: 70px;
 }
 
 header h2 {
@@ -82,6 +83,7 @@ header h2 {
   color: #aaa;
   font-weight: normal;
   line-height: 1.3;
+  padding-left: 70px;
 }
 
 #container {
@@ -152,6 +154,12 @@ a.button span {
   height: 23px;
 }
 
+#logo {
+  background-size: 100px auto;
+  translate: transform(0px, );
+  background: transparent url(../images/logo.svg) 0px -20px no-repeat;
+  display: block;
+}
 #download-zip span {
   background: transparent url(../images/zip-icon.png) 12px 50% no-repeat;
 }
