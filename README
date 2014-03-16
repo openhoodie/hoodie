@@ -1,0 +1,100 @@
+This is my as-yet unnamed implementation of Tuxedo, or enough of Tuxedo to be seriously
+interesting.
+
+Documentation for this was available from the Open Group's website.  Required reading:
+ Distributed TP: The TX (Transaction Demarcation) Specification
+ Distributed TP: The XATMI Specification
+
+Further reading:
+ ACSE Presentation: Transaction Processing API (XAP-TP)
+ Distributed TP: The TxRPC Specification
+ Distributed TP: The XA Specification
+ Distributed TP: The XCPI-C Specification, Version 2
+ Structured Transaction Definition Language (STDL)
+
+There's something which, once upon a time, in a different project, used to be called a
+"switchboard".  It got turned into "the server", and then "server"; and now I'm turning
+it back to "the switchboard".  Beware the word "server"; ask yourself, "which one?"
+
+Messages between the switchboard and a client is handled in two halves.  One half resides
+in the tx and xatmi libraries, and is implemented in files called "tpxxxx.c", which "put
+the arguments on the wire to the switchboard."  The other half, residing in the switchboard
+itself and implemented in files called "svrxxxx.c", are the message handlers.  Additional
+files perform all actual I/O for messages.
+
+There are three major objects produced from these files:
+
+* implementation of TX
+* implementation of XATMI
+* switchboard, to match
+
+Makefile
+
+dump.c: diagnostics.
+
+byteorder.c: Intel-specific conversion of numbers from network to host byte-order.  Needs removal.
+byteorder.h: must be a standard for this???
+
+queue.c: implement list C pseudo-object.
+queue.h: header for above
+
+SWITCHBOARD
+===========
+tpserver.c: the switchboard
+server.h: only for inclusion by xatmi implementation functions.
+libxatmi.h: only for inclusion by xatmi implementation functions.
+advert.c: .. advertisement routines.
+client.c: .. client routines.
+service.c: .. service routines.
+transaction.c: .. transaction routines.
+svracall.c: .. message handlers.
+svradvertise.c: ..
+svrgetrply.c: ..
+svrreturn.c: ..
+svrservice.c: ..
+svrunadvertise.c: ..
+svrio.c: message i/o routines.  (different routines used in clients.)
+
+XATMI
+=====
+xatmi.h: this is a standard include file as defined by the Open Group.
+tpfree.c: tpbuffer support.
+tpalloc.c: ..
+tprealloc.c: ..
+tptypes.c: ..
+tpacall.c: libxatmi-side message handlers.
+tpadvertise.c: ..
+tpcall.c: ..
+tpcancel.c: ..
+tpconnect.c: ..
+tpdiscon.c: ..
+tpgetrply.c: ..
+tprecv.c: ..
+tpreturn.c: ..
+tpsend.c: ..
+tpunadvertise.c: ..
+tpio.c: provides implementation surprise.
+
+
+xa.h: unused.  this is a standard include file as defined by the Open Group.
+
+TX
+==
+tx.h: this is a standard include file as defined by the Open Group.
+tx_begin.c:
+tx_close.c:
+tx_commit.c:
+tx_info.c:
+tx_io.c:
+tx_open.c:
+tx_rollback.c:
+tx_set_commit_return.c:
+tx_set_transaction_control.c:
+tx_set_transaction_timeout.c:
+
+reversesvr.c: demonstration server.  reverses arguments.
+reversetest.c: demonstration client.  calls REVERSE.
+tuxtest.c: demonstration client.  calls any service.
+
+tux.c: low-level diagnostic program.
+switch-test.txt: data for tux.c.
