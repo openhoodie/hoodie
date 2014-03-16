@@ -52,7 +52,7 @@ main(int argc, char **argv)
 		if (tpcall("REVERSE", p, l, &p, &l, 0) == -1)
 			perror("tpcall");
 		else
-			printf("REVERSE(%s) %s(%d, %ld) -> %.*s\n", *argv, (tperrno == TPESVCFAIL) ? "failed" : "succeeded", tperrno, tpurcode, l, p);
+			printf("REVERSE(%s) %s(%d, %ld) -> %.*s\n", *argv, (tperrno == TPESVCFAIL) ? "failed" : "succeeded", tperrno, tpurcode, (int)l, p);
 	}
 
 	tx_close();

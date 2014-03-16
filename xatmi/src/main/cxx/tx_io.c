@@ -46,7 +46,7 @@ static void writei(int fd, char *s, int l, int i)
 
 static void writex(int fd, char *s, int l, char *p)
 {
-	unsigned i = (int)p;
+	unsigned long i = (long)p;
 	char b[10];
 	p = b + sizeof b;
 	do

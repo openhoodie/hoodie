@@ -33,7 +33,7 @@ main(int argc, char **argv)
 
 	if (argc < 3 || argv[1][0] == '-')
 	{
-		fprintf(stderr, "usage: tuxtest switchboard service string ...\n", 39);
+		fprintf(stderr, "usage: tuxtest switchboard service string ...\n");
 		exit(1);
 	}
 
@@ -55,7 +55,7 @@ main(int argc, char **argv)
 		if (tpcall(service, p, l, &p, &l, 0) == -1)
 			perror(service);
 		else
-			printf("%s %s(%d), tpurcode %d, %.*s\n", service, (tperrno == TPESVCFAIL) ? "failed" : "succeeded", tperrno, tpurcode, l, p);
+			printf("%s %s(%d), tpurcode %d, %.*s\n", service, (tperrno == TPESVCFAIL) ? "failed" : "succeeded", tperrno, (int)tpurcode, (int)l, p);
 	}
 
 	tx_close();

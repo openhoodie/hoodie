@@ -43,7 +43,7 @@ dump(int fd, char *msg, char *p, int len)
 			len--;
 			p++;
 		}
-		fprintf(stderr, "%d: %s %.*s\n", fd, msg, q - buf, buf);
+		fprintf(stderr, "%d: %s %.*s\n", fd, msg, (int)(q - buf), buf);
 	}
 	fflush(stderr);
 }
