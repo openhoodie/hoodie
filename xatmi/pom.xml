@@ -55,7 +55,7 @@ under the License.
         <configuration>
           <libraries>
             <library>
-              <type>executable</type>
+              <type>shared</type>
               <run>true</run>
             </library>
           </libraries>
