@@ -1,4 +1,8 @@
-#include "byteorder.h"
+/*
+ * Ignore the following include for now, doesn't seem to be needed for TX
+ * #include "byteorder.h"
+ */
+
 /*
  * Start of tx.h header
  *
