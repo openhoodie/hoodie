@@ -56,7 +56,6 @@ under the License.
           <libraries>
             <library>
               <type>shared</type>
-              <run>true</run>
             </library>
           </libraries>
         </configuration>
